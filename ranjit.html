@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron">
+  <h1 class="text-center">Quiz Template Using Javascript and Bootstraps!</h1>      
+</div>
+
+<div class="container">
+     <div class="row">
+     	<div class="col-lg-2">
+     	</div>
+     	<div class="col-lg-8">
+     		 <div class="panel panel-default">
+     		 	 <div class="panel-heading" id="question">Question Heading</div>
+			     <div class="panel-body">
+			     	  <div class="row">
+			     	  		<div class="col-lg-2">
+			     	  		</div>
+			     	  		<div class="col-lg-4">
+			     	  			<div class="radio">
+								  <label>
+								  	<input type="radio" value="first" id="ans1" name="ans"> 
+								  	<span  id="first" >Option 1 </span>
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+								  	<input type="radio" id="ans2" value="third" name="ans">
+								  	<span  id="third" >Option 1 </span>
+								  </label>
+								</div>
+   
+			     	  		</div>
+			     	  		<div class="col-lg-4">
+			     	  			<div class="radio">
+								  <label>
+								  	<input value="second" type="radio" id="ans3"  name="ans">
+								  	<span  id="second" >Option 1 </span>
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+								  	<input value="fourth" type="radio" id="ans4"  name="ans">
+								  	<span  id="fourth" >Option 1 </span>
+								  </label>
+								</div>
+
+			     	  		</div>
+			     	  </div>
+
+			     </div>
+			     <div class="panel-heading text-center" style="height:50px;">
+
+			     		<input class="btn btn-default pull-right" id="button" type="button" name="button" value="Next"/>
+			     </div>
+			  </div>
+     	</div>
+     </div> 
+</div>
+
+<footer class="navbar-default navbar-fixed-bottom" style="background-color: gray;">
+  <div class="container-fluid">
+    <h3 class="text-center">Winning!</h3>
+  </div>
+</footer>
+  	<script type="text/javascript">
+  		   var ques=[
+  		   "The Bootstrap grid system is based on how many columns?",
+  		   "Which class adds zebra-stripes to a table? ",
+  		   " Which class shapes an image to a circle? ",
+  		   "Which button class is used to create a large button? ",
+  		   " Which class is used to create a button group? "
+  		   ];
+  		   var ansSet=[[9,6,3,12],
+  		[".table-striped",".table-zebra",".table-bordered","even and .odd"],[".img-round",".img-thumbnail",".img-circle",".img-rounded"],
+  		    [".btn-xl",".btn-l",".btn-lg",".btn-large"],
+  		    [".group-button","button-group","group-btn",".bbtn-group"]];
+  		    var total=5;
+  		   var i=0;
+  		   var ans= ["first","second","third","second","fourth"];
+  		   var submitAns = Array(5);
+  		  $("input[type='radio']").change(function(){
+  		  	    
+  		  		submitAns[i-1]=this.value;
+  		  		
+  		  });
+  		
+  		  document.getElementById("question").innerHTML=ques[i];
+  		  document.getElementById("first").innerHTML=ansSet[i][0];
+  		  document.getElementById("second").innerHTML=ansSet[i][1];
+  		  document.getElementById("third").innerHTML=ansSet[i][2];
+  		  document.getElementById("fourth").innerHTML=ansSet[i][3];
+  		  i++;
+  		  document.getElementById("button").addEventListener("click",function(){
+  		  	  if(i==5){
+  		  	  	 var accurate=0;
+  		  	  	 for(var j=0;j<5;j++)
+  		  	  	 	if(ans[j]==submitAns[j])
+  		  	  	 		accurate++;
+
+  		  	  	document.getElementById("question").innerHTML="Final Result";
+  		  	  	$(".panel-body .row").html("<h1 class='text-center'>"+accurate+"/"+total+" </h1>");
+  		  	  	$("#button").hide();
+  		  	  }else{
+  		  		document.getElementById("ans1").checked=false;
+  		  		document.getElementById("ans2").checked=false;
+  		  		document.getElementById("ans3").checked=false;
+  		  		document.getElementById("ans4").checked=false;
+  		  		document.getElementById("question").innerHTML=ques[i];
+  		  		document.getElementById("first").innerHTML=ansSet[i][0];
+  		  		document.getElementById("second").innerHTML=ansSet[i][1];
+  		  		document.getElementById("third").innerHTML=ansSet[i][2];
+  		  		document.getElementById("fourth").innerHTML=ansSet[i][3];
+  		  		i++;
+  		  		if(i==5){
+  		  			$("#button").val("submit");	
+  		  			$("#button").attr("class","btn btn-default");	
+  		  		}	
+  		  	  }		
+  		  });
+
+
+  	</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
